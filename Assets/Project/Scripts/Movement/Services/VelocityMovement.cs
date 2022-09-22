@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-namespace MyLife.Moving
+namespace MyLife.Movement
 {
-    public class VelocityMovement : MonoBehaviour, IMovement
+    [Serializable]
+    public class VelocityMovement : IMovement
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] [Min(0)] private float _speed;

@@ -5,8 +5,8 @@ namespace MyLife.InputSystem
 {
     public interface IPlayerInputSystem
     {
-        event Action<Vector2> OnMoveStarted;
+        event Action<Vector2> OnMove;
         
-        event Action OnMoveEnded;
+        event Action OnStopped;
     }
 }

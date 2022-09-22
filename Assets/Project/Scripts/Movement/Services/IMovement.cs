@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MyLife.Moving
+namespace MyLife.Movement
 {
     public interface IMovement
     {

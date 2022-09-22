@@ -6,8 +6,8 @@ namespace MyLife.InputSystem
 {
     public class PlayerInputSystem : MonoBehaviour, IPlayerInputSystem
     {
-        public event Action<Vector2> OnMoveStarted = delegate { };
-        public event Action OnMoveEnded = delegate { };
+        public event Action<Vector2> OnMove = delegate { };
+        public event Action OnStopped = delegate { };
 
         private MyLifeInputSystem _inputSystem;
 
@@ -31,9 +31,9 @@ namespace MyLife.InputSystem
         }
 
         private void MoveStarted(InputAction.CallbackContext context) =>
-            OnMoveStarted.Invoke(context.ReadValue<Vector2>());
+            OnMove.Invoke(context.ReadValue<Vector2>());
 
         private void MoveEnded(InputAction.CallbackContext _) =>
-            OnMoveEnded.Invoke();
+            OnStopped.Invoke();
     }
 }

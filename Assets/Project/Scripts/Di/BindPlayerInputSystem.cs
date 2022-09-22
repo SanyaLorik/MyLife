@@ -14,10 +14,19 @@ namespace MyLife.Di
         private void Bind()
         {
             Container
+                .Bind<IPlayerInputSystem>()
+                .To<PlayerInputSystem>()
+                .FromInstance(_inputSystem)
+                .AsSingle()
+                .NonLazy();
+            
+            /*
+            Container
                 .BindInterfacesTo<IPlayerInputSystem>()
                 .FromInstance(_inputSystem)
                 .AsSingle()
                 .NonLazy();
+            */
         }
     }
 }
