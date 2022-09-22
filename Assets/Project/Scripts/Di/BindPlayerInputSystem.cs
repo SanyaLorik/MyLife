@@ -19,14 +19,6 @@ namespace MyLife.Di
                 .FromInstance(_inputSystem)
                 .AsSingle()
                 .NonLazy();
-            
-            /*
-            Container
-                .BindInterfacesTo<IPlayerInputSystem>()
-                .FromInstance(_inputSystem)
-                .AsSingle()
-                .NonLazy();
-            */
         }
     }
 }
