@@ -28,7 +28,7 @@ namespace MyLife.Movement
             _inputSystem.OnStopped -= _movement.Stop;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (_direction == Vector2.zero)
                 return;
