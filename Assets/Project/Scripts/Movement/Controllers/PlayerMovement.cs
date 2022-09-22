@@ -7,8 +7,10 @@ namespace MyLife.Movement
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private VelocityMovement _movement;
+        [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] [Min(0)] private float _speed;
 
+        private IMovement _movement;
         private IPlayerInputSystem _inputSystem;
         private Vector2 _direction = Vector2.zero;
         
@@ -18,6 +20,8 @@ namespace MyLife.Movement
 
         private void OnEnable()
         {
+            _movement = new VelocityMovement(_rigidbody, _speed);
+            
             _inputSystem.OnMove += SetDirection;
             _inputSystem.OnStopped += _movement.Stop;
         }

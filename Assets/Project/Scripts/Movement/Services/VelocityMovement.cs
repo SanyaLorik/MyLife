@@ -3,11 +3,16 @@ using UnityEngine;
 
 namespace MyLife.Movement
 {
-    [Serializable]
     public class VelocityMovement : IMovement
     {
-        [SerializeField] private Rigidbody2D _rigidbody;
-        [SerializeField] [Min(0)] private float _speed;
+        private readonly Rigidbody2D _rigidbody;
+        private float _speed;
+        
+        public VelocityMovement(Rigidbody2D rigidbody, float speed)
+        {
+            _rigidbody = rigidbody;
+            _speed = speed;
+        }
 
         public void Move(Vector2 direction) =>
             _rigidbody.velocity = direction * _speed;
