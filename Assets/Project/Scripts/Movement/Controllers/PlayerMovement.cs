@@ -29,9 +29,9 @@ namespace MyLife.Movement
         private void OnDisable()
         { 
             _inputSystem.OnMove -= SetDirection;
-            _inputSystem.OnStopped -= _movement.Stop;
+            _inputSystem.OnStopped -= Stop;
         }
-
+        
         private void FixedUpdate()
         {
             if (_direction == Vector2.zero)
@@ -40,6 +40,12 @@ namespace MyLife.Movement
             _movement.Move(_direction);
         }
 
+        private void Stop()
+        {
+            _direction = Vector2.zero;
+            _movement.Stop();
+        }
+        
         private void SetDirection(Vector2 direction) =>
             _direction = direction;
     }
