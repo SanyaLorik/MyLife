@@ -10,10 +10,10 @@ namespace MyLife.Movement
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] [Min(0)] private float _speed;
 
-        private IMovement _movement;
         private IPlayerInputSystem _inputSystem;
         private Vector2 _direction = Vector2.zero;
-        
+        private IMovement _movement;
+
         [Inject]
         private void Construct(IPlayerInputSystem inputSystem) =>
             _inputSystem = inputSystem;
@@ -23,7 +23,7 @@ namespace MyLife.Movement
             _movement = new VelocityMovement(_rigidbody, _speed);
             
             _inputSystem.OnMove += SetDirection;
-            _inputSystem.OnStopped += _movement.Stop;
+            _inputSystem.OnStopped += Stop;
         }
 
         private void OnDisable()
@@ -40,13 +40,13 @@ namespace MyLife.Movement
             _movement.Move(_direction);
         }
 
+        private void SetDirection(Vector2 direction) =>
+            _direction = direction;
+        
         private void Stop()
         {
             _direction = Vector2.zero;
             _movement.Stop();
         }
-        
-        private void SetDirection(Vector2 direction) =>
-            _direction = direction;
     }
 }

@@ -6,7 +6,7 @@ namespace MyLife.Movement
     public class VelocityMovement : IMovement
     {
         private readonly Rigidbody2D _rigidbody;
-        private float _speed;
+        private readonly float _speed;
         
         public VelocityMovement(Rigidbody2D rigidbody, float speed)
         {
